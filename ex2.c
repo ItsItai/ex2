@@ -1,6 +1,6 @@
 /******************
 Name:
-ID:
+ID: 
 Assignment: ex2
 *******************/
 
@@ -9,7 +9,7 @@ Assignment: ex2
 int main() {
 	int menuOption = 0;
 	while (menuOption != 7) {
-		printf("Choose an option:\n\t1. Happy Face\n\t2. Balanced Number\n\t3. Generous Number\n\t4. Circle Of Joy\n\t5. Happy Numbers\n\t6. Festival of Laughter\n\t7. Exit\n");
+		printf("Choose an option:\n\t1. Happy Face\n\t2. Balanced Number\n\t3. Generous Number\n\t4. Circle Of Joy\n\t5. Happy Numbers\n\t6. Festival Of Laughter\n\t7. Exit\n");
 		scanf(" %d", &menuOption);
 		switch (menuOption) {
 			// Case 1 : Draw a happy face with given characters for eyes, nose and mouth and a given size
@@ -204,7 +204,7 @@ int main() {
 				scanf("%d", &festivalMax);
 				// Check if the number is positive, if not, ask the user to enter a new number
 				while (festivalMax < 1) {
-					printf("Only positive number is allowed, please try again:\n");
+					printf("Only positive maximum number is allowed, please try again:\n");
 					scanf("%d", &festivalMax);
 				}
 				// Print the numbers based on the festival rules

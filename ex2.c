@@ -76,10 +76,10 @@ int main() {
 					digitPosition++;
 				}
 				if (digitSumL == digitSumR) {
-					printf("Balanced\n");
+					printf("This number is balanced and brings harmony!\n");
 				}
 				else {
-					printf("Not Balanced\n");
+					printf("This number isn't balanced and destroys harmony.\n");
 				}
 				break;
 			// Case 3 : determine whether the sum of the proper divisors of a number is greater than the itself

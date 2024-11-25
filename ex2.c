@@ -193,6 +193,7 @@ int main() {
 				festivalFormat = scanf(" smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
 				// Clear the buffer
 				scanf("%*[^\n]%*c");
+				// Validate the input format and check if the numbers are positive and different, if not, ask the user to enter new numbers
 				while (festivalFormat != 2 || festivalSmile == festivalCheer || festivalSmile < 1 || festivalCheer < 1 ) {
 					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
 					festivalFormat = scanf(" smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
@@ -206,18 +207,18 @@ int main() {
 					printf("Only positive number is allowed, please try again:\n");
 					scanf("%d", &festivalMax);
 				}
+				// Print the numbers based on the festival rules
 				for (int i = 1; i <= festivalMax; i++) {
 					if (i % festivalSmile == 0 && i % festivalCheer == 0) {
-						printf("Festival! ");
+						printf("Festival!\n");
 					} else if (i % festivalSmile == 0) {
-						printf("Smile! ");
+						printf("Smile!\n");
 					} else if (i % festivalCheer == 0) {
-						printf("Cheer! ");
+						printf("Cheer!\n");
 					} else {
-						printf("%d ", i);
+						printf("%d\n", i);
 					}
 				}
-				printf("\n");
 				break;
 			// Case 7 : Exit the program
 			case 7 :

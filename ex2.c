@@ -106,33 +106,117 @@ int main() {
 				break;
 			// Case 4 : determine whether a number and it's reversed version are prime numbers
 			case 4 :
-			int primeNum = 0;
-			printf("Enter a number:\n");
-			scanf("%d", &primeNum);
-			while (primeNum < 1) {
+				int primeNum = 0, primeFlag = 1, primeFlagreversed = 1, primeReversed = 0;
+				printf("Enter a number:\n");
+				scanf("%d", &primeNum);
+				// Check if the number is positive, if not, ask the user to enter a new number
+				while (primeNum < 1) {
 					printf("Only positive number is allowed, please try again:\n");
 					scanf("%d", &primeNum);
 				}
-			
-			break;
-			// Case 5 : Happy numbers: Print all the happy numbers between 1 to the given number.
-			// Happy number is a number which eventually reaches 1 when replaced by the sum of the square of each digit
-			/* Examples:
-			Happy :) : 7, 10
-			Not Happy :( : 5, 9
-			Please notice: the number has to be bigger than 0.
-			*/
+				// Flag the number as not prime if it's 1
+				if (primeNum == 1) {
+					primeFlag = 0;
+				// Check if the number is prime
+				} else {
+					for (int i = 2; i < primeNum; i++) {
+						if (primeNum % i == 0) {
+							primeFlag = 0;
+							break;
+						}
+					}
+				}
+				if (primeFlag == 1) {
+					// Reverse the number
+					while (primeNum != 0) {
+						int digit = primeNum % 10;
+						primeReversed = primeReversed * 10 + digit;
+						primeNum /= 10;
+					}
+					for (int i = 2; i < primeReversed; i++) {
+						if (primeReversed % i == 0) {
+							primeFlagreversed = 0;
+							break;
+						}
+					}
+					if (primeFlagreversed == 1) {
+					printf("This number completes the circle of joy!\n");
+					} else {
+						printf("The circle remains incomplete.\n");
+					}
+				} else {
+					printf("The circle remains incomplete.\n");
+				}
+				break;
+			// Case 5 : Print all the happy numbers between 1 to the given number.
 			case 5 :
-			break;
+				int happyNum = 0;
+				printf("Enter a number:\n");
+				scanf("%d", &happyNum);
+				// Check if the number is positive, if not, ask the user to enter a new number
+				while (happyNum < 1) {
+					printf("Only positive number is allowed, please try again:\n");
+					scanf("%d", &happyNum);
+				}
+				printf("Between 1 and %d only these numbers bring happiness: ", happyNum);
+				// Go through all the numbers between 1 and the given number
+				for (int i = 1; i <= happyNum; i++) {
+					int num = i;
+					/* Avoid infinite loops by checking if the sum is 1 or 4
+						If the sum is 1 then the number is happy 
+						If the sum is 1 then the number is not happy (Based on the example provided in the assignment and considering 4 is always in the unhappy sum cycle)*/
+					while (num != 1 && num != 4) {
+						int sum = 0;
+						// Calculate the sum of the squares of the digits
+						while (num > 0) {
+							int digit = num % 10;
+							sum += digit * digit;
+							num /= 10;
+						}
+						num = sum;
+					}
+					// Print the number if it's a happy number
+					if (num == 1) {
+						printf("%d ", i);
+					}
+				}
+				printf("\n");
+				break;
 			// Case 6 : Festival of Laughter - Prints all the numbers between 1 the given number:
-			// and replace with "Smile!" every number that divided by the given smile number
-			// and replace with "Cheer!" every number that divided by the given cheer number
-			// and replace with "Festival!" every number that divided by both of them
-			/* Example:
-			6, smile: 2, cheer: 3 : 1, Smile!, Cheer!, Smile!, 5, Festival!
-			*/
 			case 6 :
-			break;
+				int festivalSmile = 0, festivalCheer = 0, festivalMax = 0, festivalFormat = 0;
+				printf("Enter a smile and cheer number:\n");
+				festivalFormat = scanf("smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
+				// Clear the buffer
+				scanf("%*[^\n]"); 
+				scanf("%*c");
+				// Validate the input format and that the numbers are positive if not, ask the user to enter them again
+				while (festivalFormat != 2 || festivalSmile == festivalCheer || festivalSmile < 1 || festivalCheer < 1 ) {
+					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+					// Clear the buffer
+					festivalFormat = scanf("smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
+					scanf("%*[^\n]"); 
+					scanf("%*c");
+				}
+				printf("Enter maximum number for the festival:\n");
+				scanf("%d", &festivalMax);
+				// Check if the number is positive, if not, ask the user to enter a new number
+				while (festivalMax < 1) {
+					printf("Only positive number is allowed, please try again:\n");
+					scanf("%d", &festivalMax);
+				}
+				for (int i = 1; i <= festivalMax; i++) {
+					if (i % festivalSmile == 0 && i % festivalCheer == 0) {
+						printf("Festival! ");
+					} else if (i % festivalSmile == 0) {
+						printf("Smile! ");
+					} else if (i % festivalCheer == 0) {
+						printf("Cheer! ");
+					} else {
+						printf("%d ", i);
+					}
+				}
+				break;
 			// Case 7 : Exit the program
 			case 7 :
 				printf("Thank you for your journey through Numeria!\n");

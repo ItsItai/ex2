@@ -182,21 +182,22 @@ int main() {
 				}
 				printf("\n");
 				break;
-			// Case 6 : Festival of Laughter - Prints all the numbers between 1 the given number:
+			/* Case 6 : Festival of Laughter - Prints all the numbers between 1 and the given number.
+				If a number is divisible by the smile number, it prints "Smile!".
+				If a number is divisible by the cheer number, it prints "Cheer!".
+				If a number is divisible by both, it prints "Festival!".
+				Otherwise, it prints the number itself.*/
 			case 6 :
 				int festivalSmile = 0, festivalCheer = 0, festivalMax = 0, festivalFormat = 0;
 				printf("Enter a smile and cheer number:\n");
-				festivalFormat = scanf("smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
+				festivalFormat = scanf(" smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
 				// Clear the buffer
-				scanf("%*[^\n]"); 
-				scanf("%*c");
-				// Validate the input format and that the numbers are positive if not, ask the user to enter them again
+				scanf("%*[^\n]%*c");
 				while (festivalFormat != 2 || festivalSmile == festivalCheer || festivalSmile < 1 || festivalCheer < 1 ) {
 					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+					festivalFormat = scanf(" smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
 					// Clear the buffer
-					festivalFormat = scanf("smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
-					scanf("%*[^\n]"); 
-					scanf("%*c");
+					scanf("%*[^\n]%*c");
 				}
 				printf("Enter maximum number for the festival:\n");
 				scanf("%d", &festivalMax);
@@ -216,6 +217,7 @@ int main() {
 						printf("%d ", i);
 					}
 				}
+				printf("\n");
 				break;
 			// Case 7 : Exit the program
 			case 7 :

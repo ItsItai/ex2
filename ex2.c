@@ -7,14 +7,14 @@ Assignment: ex2
 #include <stdio.h>
 
 int main() {
-	const int HAPPY_FACE = 1, BALANCED_NUMBER = 2, GENEROUS_NUMBER = 3, CIRCLE_OF_JOY = 4, HAPPY_NUMBERS = 5, FESTIVAL_OF_LAUGHTER = 6, EXIT = 7;
+	const int MENU_OPTION_HAPPY_FACE = 1, MENU_OPTION_BALANCED_NUMBER = 2, MENU_OPTION_GENEROUS_NUMBER = 3, MENU_OPTION_CIRCLE_OF_JOY = 4, MENU_OPTION_HAPPY_NUMBERS = 5, MENU_OPTION_FESTIVAL_OF_LAUGHTER = 6, MENU_OPTION_EXIT = 7;
 	int menuOption = 0;
-	while (menuOption != EXIT) {
+	while (menuOption != MENU_OPTION_EXIT) {
 		printf("Choose an option:\n\t1. Happy Face\n\t2. Balanced Number\n\t3. Generous Number\n\t4. Circle Of Joy\n\t5. Happy Numbers\n\t6. Festival Of Laughter\n\t7. Exit\n");
 		scanf(" %d", &menuOption);
 		switch (menuOption) {
 			// Case 1 : Draw a happy face with given characters for eyes, nose and mouth and a given size
-			case HAPPY_FACE :
+			case MENU_OPTION_HAPPY_FACE :
 				const int FACE_MIN_SIZE = 1;
 				char faceEyes = 0, faceNose = 0, faceMouth = 0;
 				int faceSize = 0;
@@ -51,7 +51,7 @@ int main() {
 				printf("/\n");
 				break;
 			// Case 2 : Determine if the sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal 
-			case BALANCED_NUMBER :
+			case MENU_OPTION_BALANCED_NUMBER :
 				int digitNum = 0, digitSumL = 0, digitSumR = 0, digitCount = 0, digitTempnum = 0, digitPosition = 1;
 				printf("Enter a number:\n");
 				scanf("%d", &digitNum);
@@ -89,7 +89,7 @@ int main() {
 				}
 				break;
 			// Case 3 : determine whether the sum of the proper divisors of a number is greater than the itself
-			case GENEROUS_NUMBER :
+			case MENU_OPTION_GENEROUS_NUMBER :
 				int abundantNum = 0, abundantSum = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &abundantNum);
@@ -111,7 +111,7 @@ int main() {
 				}
 				break;
 			// Case 4 : determine whether a number and it's reversed version are prime numbers
-			case CIRCLE_OF_JOY :
+			case MENU_OPTION_CIRCLE_OF_JOY :
 				int primeNum = 0, primeFlag = 1, primeFlagreversed = 1, primeReversed = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &primeNum);
@@ -156,8 +156,8 @@ int main() {
 				}
 				break;
 			// Case 5 : Print all the happy numbers between 1 to the given number.
-			case HAPPY_NUMBERS :
-				const int HAPPY_CYCLE_NUM1 = 4, HAPPY_CYCLE_NUM2 = 16, HAPPY_CYCLE_NUM3 = 37, HAPPY_CYCLE_NUM4 = 58, HAPPY_CYCLE_NUM5 = 89, HAPPY_CYCLE_NUM6 = 145, HAPPY_CYCLE_NUM7 = 42, HAPPY_CYCLE_NUM8 = 20;
+			case MENU_OPTION_HAPPY_NUMBERS :
+				const int HAPPY_CYCLE_4 = 4, HAPPY_CYCLE_16 = 16, HAPPY_CYCLE_37 = 37, HAPPY_CYCLE_58 = 58, HAPPY_CYCLE_89 = 89, HAPPY_CYCLE_145 = 145, HAPPY_CYCLE_42 = 42, HAPPY_CYCLE_20 = 20;
 				int happyNum = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &happyNum);
@@ -173,8 +173,8 @@ int main() {
 					/* Avoid infinite loops by checking the sum
 					 If it is 1 then the number is happy
 					 If it is one of the numbers 4, 16, 37, 58, 89, 145, 42, 20 then the number is not happy (all numbers that are not happy eventually enter this infinite cycle of sums)
-					 (And I just want to clarify - I would have used an array for the not happy cycle if that was allowed)*/
-					while (num != 1 && num != HAPPY_CYCLE_NUM1 && num != HAPPY_CYCLE_NUM2 && num != HAPPY_CYCLE_NUM3 && num != HAPPY_CYCLE_NUM4 && num != HAPPY_CYCLE_NUM5 && num != HAPPY_CYCLE_NUM6 && num != HAPPY_CYCLE_NUM7 && num != HAPPY_CYCLE_NUM8) {
+					 (And I just want to clarify, I would have used an array for the not happy cycle if that was allowed)*/
+					while (num != 1 && num != HAPPY_CYCLE_4 && num != HAPPY_CYCLE_16 && num != HAPPY_CYCLE_37 && num != HAPPY_CYCLE_58 && num != HAPPY_CYCLE_89 && num != HAPPY_CYCLE_145 && num != HAPPY_CYCLE_42 && num != HAPPY_CYCLE_20) {
 						int sum = 0;
 						// Calculate the sum of the squares of the digits
 						while (num > 0) {
@@ -196,7 +196,7 @@ int main() {
 				If a number is divisible by the cheer number, it prints "Cheer!".
 				If a number is divisible by both, it prints "Festival!".
 				Otherwise, it prints the number itself.*/
-			case FESTIVAL_OF_LAUGHTER :
+			case MENU_OPTION_FESTIVAL_OF_LAUGHTER :
 				const int FESTIVAL_CORRECT_FORMAT = 2;
 				int festivalSmile = 0, festivalCheer = 0, festivalMax = 0, festivalFormat = 0;
 				printf("Enter a smile and cheer number:\n");
@@ -231,7 +231,7 @@ int main() {
 				}
 				break;
 			// Case 7 : Exit the program
-			case EXIT :
+			case MENU_OPTION_EXIT :
 				printf("Thank you for your journey through Numeria!\n");
 				break;
 			// Default : Print an error message and ask the user to enter a new option (menu option input validation)

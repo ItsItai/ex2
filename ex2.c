@@ -172,8 +172,8 @@ int main() {
 					int num = i;
 					/* Avoid infinite loops by checking the sum
 					 If it is 1 then the number is happy
-					 If it is one of the numbers 4, 16, 37, 58, 89, 145, 42, 20 it is not happy (all numbers that are not happy eventually enter this cycle of sums)
-					 (And I just want to clarify that I would have used an array for the not happy cycle if that was allowed)*/
+					 If it is one of the numbers 4, 16, 37, 58, 89, 145, 42, 20 then the number is not happy (all numbers that are not happy eventually enter this infinite cycle of sums)
+					 (And I just want to clarify - I would have used an array for the not happy cycle if that was allowed)*/
 					while (num != 1 && num != HAPPY_CYCLE_NUM1 && num != HAPPY_CYCLE_NUM2 && num != HAPPY_CYCLE_NUM3 && num != HAPPY_CYCLE_NUM4 && num != HAPPY_CYCLE_NUM5 && num != HAPPY_CYCLE_NUM6 && num != HAPPY_CYCLE_NUM7 && num != HAPPY_CYCLE_NUM8) {
 						int sum = 0;
 						// Calculate the sum of the squares of the digits

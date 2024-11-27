@@ -6,7 +6,6 @@ Assignment: ex2
 
 #include <stdio.h>
 #define DECIMAL_BASE 10
-#define FESTIVAL_CORRECT_FORMAT 2
 
 int main() {
 	int menuOption = 0;
@@ -52,7 +51,7 @@ int main() {
 				break;
 			// Case 2 : Determine if the sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal 
 			case 2 :
-				int digitNum = 0, digitSumL = 0, digitSumR = 0, digitCount = 0, digitTempnum = 0, digitPosition = 1;
+				int digitNum = 0, digitSumL = 0, digitSumR = 0, digitCount = 0, digitTempnum = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &digitNum);
 				// Check if the number is positive, if not, ask the user to enter a new number
@@ -68,7 +67,7 @@ int main() {
 				}
 				// Calculate the sum of the digits to the left and right of the middle digit(s)
 				digitTempnum = digitNum;
-				while (digitTempnum != 0) {
+				for (int digitPosition = 1; digitTempnum != 0; digitPosition++) {
 					// Get the current digit
 					int digitCurrent = digitTempnum % DECIMAL_BASE;
 					digitTempnum /= DECIMAL_BASE;
@@ -79,7 +78,6 @@ int main() {
 					else if (digitPosition > (digitCount + 1) / 2)  {
 						digitSumR += digitCurrent;
 					}
-					digitPosition++;
 				}
 				if (digitSumL == digitSumR) {
 					printf("This number is balanced and brings harmony!\n");
@@ -202,7 +200,7 @@ int main() {
 				// Clear the buffer
 				scanf("%*[^\n]%*c");
 				// Validate the input format and check if the numbers are positive and different, if not, ask the user to enter new numbers
-				while (festivalFormat != FESTIVAL_CORRECT_FORMAT || festivalSmile == festivalCheer || festivalSmile < 1 || festivalCheer < 1 ) {
+				while (festivalFormat != 2 || festivalSmile == festivalCheer || festivalSmile < 1 || festivalCheer < 1 ) {
 					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
 					festivalFormat = scanf(" smile: %d , cheer: %d", &festivalSmile, &festivalCheer);
 					// Clear the buffer

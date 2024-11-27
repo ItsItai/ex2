@@ -5,6 +5,8 @@ Assignment: ex2
 *******************/
 
 #include <stdio.h>
+#define DECIMAL_BASE 10
+#define FESTIVAL_CORRECT_FORMAT 2
 
 int main() {
 	int menuOption = 0;
@@ -14,15 +16,14 @@ int main() {
 		switch (menuOption) {
 			// Case 1 : Draw a happy face with given characters for eyes, nose and mouth and a given size
 			case 1 : 
-				const int FACE_MIN_SIZE = 1;
 				char faceEyes = 0, faceNose = 0, faceMouth = 0;
 				int faceSize = 0;
 				printf("Enter symbols for the eyes, nose, and mouth:\n");
 				scanf(" %c %c %c", &faceEyes, &faceNose, &faceMouth);
 				printf("Enter face size:\n");
 				scanf("%d", &faceSize);
-				// Check if the face size is an odd and positive number, if not, ask the user to enter a new number
-				while (faceSize < FACE_MIN_SIZE || faceSize % 2 == 0) {
+				// Check if the face size is above the minimum size and is an odd number, if not, ask the user to enter a new size
+				while (faceSize < 1 || faceSize % 2 == 0) {
 					printf("The face's size must be an odd and positive number, please try again:\n");
 					scanf("%d", &faceSize);
 				}
@@ -33,13 +34,13 @@ int main() {
 				}
 				printf("%c\n", faceEyes);
 				// Print the space before the nose
-				for (int i = 0; i < (faceSize / 2) + 1; i++) {
+				for (int i = 0; i <= faceSize / 2; i++) {
 					printf(" ");
 				}
 				// Print the nose
 				printf("%c", faceNose);
 				// Print the space after the nose
-				for (int i = 0; i < (faceSize / 2) + 1; i++) {
+				for (int i = 0; i <= faceSize / 2; i++) {
 					printf(" ");
 				}
 				// Print the mouth
@@ -62,15 +63,15 @@ int main() {
 				// Calculate the number of digits
 				digitTempnum = digitNum;
 				while (digitTempnum != 0) {
-					digitTempnum /= 10;
+					digitTempnum /= DECIMAL_BASE;
 					digitCount++;
 				}
 				// Calculate the sum of the digits to the left and right of the middle digit(s)
 				digitTempnum = digitNum;
 				while (digitTempnum != 0) {
 					// Get the current digit
-					int digitCurrent = digitTempnum % 10;
-					digitTempnum /= 10;
+					int digitCurrent = digitTempnum % DECIMAL_BASE;
+					digitTempnum /= DECIMAL_BASE;
 					// Check if the digit is in the left or right side of the middle digit(s) and add it to the appropriate sum
 					if (digitPosition <= digitCount / 2) {
 						digitSumL += digitCurrent;
@@ -134,9 +135,9 @@ int main() {
 				if (primeFlag == 1) {
 					// Reverse the number
 					while (primeNum != 0) {
-						int digit = primeNum % 10;
-						primeReversed = primeReversed * 10 + digit;
-						primeNum /= 10;
+						int digit = primeNum % DECIMAL_BASE;
+						primeReversed = primeReversed * DECIMAL_BASE + digit;
+						primeNum /= DECIMAL_BASE;
 					}
 					// Check if the number is prime by checking if it's divisible by any number other than 1 and itself
 					for (int i = 2; i < primeReversed; i++) {
@@ -156,7 +157,6 @@ int main() {
 				break;
 			// Case 5 : Print all the happy numbers between 1 to the given number.
 			case 5 :
-				const int HAPPY_CYCLE_4 = 4, HAPPY_CYCLE_16 = 16, HAPPY_CYCLE_37 = 37, HAPPY_CYCLE_58 = 58, HAPPY_CYCLE_89 = 89, HAPPY_CYCLE_145 = 145, HAPPY_CYCLE_42 = 42, HAPPY_CYCLE_20 = 20;
 				int happyNum = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &happyNum);
@@ -171,15 +171,15 @@ int main() {
 					int num = i;
 					/* Avoid infinite loops by checking the sum
 					 If it is 1 then the number is happy
-					 If it is one of the numbers 4, 16, 37, 58, 89, 145, 42, 20 then the number is not happy (all numbers that are not happy eventually enter this infinite cycle of sums)
-					 (And I just want to clarify, I would have used an array for the not happy cycle if that was allowed)*/
-					while (num != 1 && num != HAPPY_CYCLE_4 && num != HAPPY_CYCLE_16 && num != HAPPY_CYCLE_37 && num != HAPPY_CYCLE_58 && num != HAPPY_CYCLE_89 && num != HAPPY_CYCLE_145 && num != HAPPY_CYCLE_42 && num != HAPPY_CYCLE_20) {
+					 If it is one of the numbers 4, 16, 37, 58, 89, 145, 42, 20 then the number is not happy since all numbers that are not happy eventually enter this infinite cycle of sums
+					 (And I just to clarify, I would have used an array for the not happy cycle if it was allowed)*/
+					while (num != 1 && num != 4 && num != 16 && num != 37 && num != 58 && num != 89 && num != 145 && num != 42 && num != 20) {
 						int sum = 0;
 						// Calculate the sum of the squares of the digits
 						while (num > 0) {
-							int digit = num % 10;
+							int digit = num % DECIMAL_BASE;
 							sum += digit * digit;
-							num /= 10;
+							num /= DECIMAL_BASE;
 						}
 						num = sum;
 					}
@@ -196,7 +196,6 @@ int main() {
 				If a number is divisible by both, it prints "Festival!".
 				Otherwise, it prints the number itself.*/
 			case 6 :
-				const int FESTIVAL_CORRECT_FORMAT = 2;
 				int festivalSmile = 0, festivalCheer = 0, festivalMax = 0, festivalFormat = 0;
 				printf("Enter a smile and cheer number:\n");
 				festivalFormat = scanf(" smile: %d , cheer: %d", &festivalSmile, &festivalCheer);

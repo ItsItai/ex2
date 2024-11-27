@@ -7,14 +7,13 @@ Assignment: ex2
 #include <stdio.h>
 
 int main() {
-	const int MENU_OPTION_HAPPY_FACE = 1, MENU_OPTION_BALANCED_NUMBER = 2, MENU_OPTION_GENEROUS_NUMBER = 3, MENU_OPTION_CIRCLE_OF_JOY = 4, MENU_OPTION_HAPPY_NUMBERS = 5, MENU_OPTION_FESTIVAL_OF_LAUGHTER = 6, MENU_OPTION_EXIT = 7;
 	int menuOption = 0;
-	while (menuOption != MENU_OPTION_EXIT) {
+	while (menuOption != 7) {
 		printf("Choose an option:\n\t1. Happy Face\n\t2. Balanced Number\n\t3. Generous Number\n\t4. Circle Of Joy\n\t5. Happy Numbers\n\t6. Festival Of Laughter\n\t7. Exit\n");
 		scanf(" %d", &menuOption);
 		switch (menuOption) {
 			// Case 1 : Draw a happy face with given characters for eyes, nose and mouth and a given size
-			case MENU_OPTION_HAPPY_FACE :
+			case 1 : 
 				const int FACE_MIN_SIZE = 1;
 				char faceEyes = 0, faceNose = 0, faceMouth = 0;
 				int faceSize = 0;
@@ -51,7 +50,7 @@ int main() {
 				printf("/\n");
 				break;
 			// Case 2 : Determine if the sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal 
-			case MENU_OPTION_BALANCED_NUMBER :
+			case 2 :
 				int digitNum = 0, digitSumL = 0, digitSumR = 0, digitCount = 0, digitTempnum = 0, digitPosition = 1;
 				printf("Enter a number:\n");
 				scanf("%d", &digitNum);
@@ -89,7 +88,7 @@ int main() {
 				}
 				break;
 			// Case 3 : determine whether the sum of the proper divisors of a number is greater than the itself
-			case MENU_OPTION_GENEROUS_NUMBER :
+			case 3 :
 				int abundantNum = 0, abundantSum = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &abundantNum);
@@ -111,7 +110,7 @@ int main() {
 				}
 				break;
 			// Case 4 : determine whether a number and it's reversed version are prime numbers
-			case MENU_OPTION_CIRCLE_OF_JOY :
+			case 4 :
 				int primeNum = 0, primeFlag = 1, primeFlagreversed = 1, primeReversed = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &primeNum);
@@ -156,7 +155,7 @@ int main() {
 				}
 				break;
 			// Case 5 : Print all the happy numbers between 1 to the given number.
-			case MENU_OPTION_HAPPY_NUMBERS :
+			case 5 :
 				const int HAPPY_CYCLE_4 = 4, HAPPY_CYCLE_16 = 16, HAPPY_CYCLE_37 = 37, HAPPY_CYCLE_58 = 58, HAPPY_CYCLE_89 = 89, HAPPY_CYCLE_145 = 145, HAPPY_CYCLE_42 = 42, HAPPY_CYCLE_20 = 20;
 				int happyNum = 0;
 				printf("Enter a number:\n");
@@ -196,7 +195,7 @@ int main() {
 				If a number is divisible by the cheer number, it prints "Cheer!".
 				If a number is divisible by both, it prints "Festival!".
 				Otherwise, it prints the number itself.*/
-			case MENU_OPTION_FESTIVAL_OF_LAUGHTER :
+			case 6 :
 				const int FESTIVAL_CORRECT_FORMAT = 2;
 				int festivalSmile = 0, festivalCheer = 0, festivalMax = 0, festivalFormat = 0;
 				printf("Enter a smile and cheer number:\n");
@@ -231,7 +230,7 @@ int main() {
 				}
 				break;
 			// Case 7 : Exit the program
-			case MENU_OPTION_EXIT :
+			case 7 :
 				printf("Thank you for your journey through Numeria!\n");
 				break;
 			// Default : Print an error message and ask the user to enter a new option (menu option input validation)
